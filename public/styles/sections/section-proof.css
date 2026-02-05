@@ -1,0 +1,42 @@
+.section-proof .section__title {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.section-proof .proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.section-proof .proof-card {
+  border-radius: var(--radius-md);
+  background: rgba(5, 8, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(14px);
+  padding: var(--space-lg);
+}
+
+.section-proof .proof-card__title {
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-xs);
+}
+
+.section-proof .proof-card__body {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .section-proof .proof-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-proof .proof-card {
+    padding: var(--space-lg);
+  }
+}
+
