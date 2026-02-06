@@ -237,6 +237,26 @@
     </footer>
 
     <script type="module" src="../src/scripts/main.js"></script>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <script>
+      if (window.netlifyIdentity) {
+        netlifyIdentity.on("init", user => {
+          if (!user) {
+            netlifyIdentity.on("login", () => {
+              window.location.href = "/admin/";
+            });
+          }
+        });
+
+        netlifyIdentity.on("logout", () => {
+          window.location.href = "/";
+        });
+
+        netlifyIdentity.init();
+      }
+    </script>
   </body>
 </html>
 
