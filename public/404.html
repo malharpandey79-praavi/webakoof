@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found | Webakoof</title>
+    <link rel="stylesheet" href="/styles/base/reset.css" />
+    <link rel="stylesheet" href="/styles/base/variables.css" />
+    <link rel="stylesheet" href="/styles/base/typography.css" />
+    <link rel="stylesheet" href="/styles/layout/layout-shell.css" />
+    <link rel="stylesheet" href="/styles/components/buttons.css" />
+    <style>
+      .page-not-found {
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-block: var(--space-xl);
+      }
+
+      .page-not-found__inner {
+        max-width: 560px;
+        text-align: center;
+      }
+
+      .page-not-found__code {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--space-xs);
+      }
+
+      .page-not-found__title {
+        font-size: var(--font-size-xl);
+        margin-bottom: var(--space-sm);
+      }
+
+      .page-not-found__body {
+        margin-bottom: var(--space-lg);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="layout-shell site-header__inner">
+        <a href="/" class="site-header__logo">Webakoof</a>
+        <nav class="site-header__nav" aria-label="Primary navigation">
+          <a href="/" class="site-header__link">Home</a>
+          <a href="/blog.html" class="site-header__link">Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main page-not-found">
+      <div class="layout-shell page-not-found__inner">
+        <p class="page-not-found__code">404</p>
+        <h1 class="page-not-found__title">Page not found</h1>
+        <p class="page-not-found__body">
+          The link you followed doesn’t exist or has moved. Head back to the homepage and keep
+          moving fast.
+        </p>
+        <a href="/" class="btn btn--primary">Back to Home</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="layout-shell site-footer__inner">
+        <p class="site-footer__copy">
+          &copy; <span id="footer-year"></span> Webakoof. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const yearSpan = document.getElementById("footer-year");
+      if (yearSpan) {
+        yearSpan.textContent = String(new Date().getFullYear());
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://webakoof.netlify.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://webakoof.netlify.app/blog.html</loc>
+  </url>
+
+  <url>
+    <loc>https://webakoof.netlify.app/blog-post.html?slug=new-blog-hello-world</loc>
+    <lastmod>2026-02-06</lastmod>
+  </url>
+</urlset>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Webakoof Blog</title>
+    <link>https://webakoof.netlify.app/blog/</link>
+    <description>Articles on shipping fast, keeping websites lean, and turning traffic into conversations.</description>
+    <lastBuildDate>Fri, 06 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <language>en-IN</language>
+
+    <item>
+      <title>Hello World: Webakoof Blog is Live</title>
+      <link>https://webakoof.netlify.app/blog-post.html?slug=new-blog-hello-world</link>
+      <guid isPermaLink="false">https://webakoof.netlify.app/blog-post.html?slug=new-blog-hello-world</guid>
+      <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
+      <description><![CDATA[The first official blog post of Webakoof explaining our tech-first approach.]]></description>
+    </item>
+  </channel>
+</rss>
+

@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050814" />
+    <title>Blog | Webakoof</title>
+    <meta
+      name="description"
+      content="Articles on shipping fast, keeping websites lean, and turning traffic into conversations."
+    />
+    <link rel="canonical" href="https://webakoof.netlify.app/blog/" />
+    <meta property="og:title" content="Blog | Webakoof" />
+    <meta
+      property="og:description"
+      content="Articles on shipping fast, keeping websites lean, and turning traffic into conversations."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://webakoof.netlify.app/blog/" />
+    <meta property="og:site_name" content="Webakoof" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blog | Webakoof" />
+    <meta
+      name="twitter:description"
+      content="Articles on shipping fast, keeping websites lean, and turning traffic into conversations."
+    />
+    <link rel="stylesheet" href="/styles/base/reset.css" />
+    <link rel="stylesheet" href="/styles/base/variables.css" />
+    <link rel="stylesheet" href="/styles/base/typography.css" />
+    <link rel="stylesheet" href="/styles/layout/layout-shell.css" />
+    <style>
+      .blog-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+
+      .blog-list__item {
+        position: relative;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(5, 8, 20, 0.88);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(18px);
+        padding: var(--space-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-sm);
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: blog-card-in 380ms var(--ease-smooth) forwards;
+        transition:
+          transform var(--duration-fast) var(--ease-smooth),
+          box-shadow var(--duration-fast) var(--ease-smooth),
+          border-color var(--duration-fast) var(--ease-smooth);
+      }
+
+      .blog-list__item:nth-child(1) {
+        animation-delay: 40ms;
+      }
+      .blog-list__item:nth-child(2) {
+        animation-delay: 90ms;
+      }
+      .blog-list__item:nth-child(3) {
+        animation-delay: 140ms;
+      }
+      .blog-list__item:nth-child(4) {
+        animation-delay: 190ms;
+      }
+      .blog-list__item:nth-child(5) {
+        animation-delay: 240ms;
+      }
+
+      .blog-list__item:hover {
+        transform: translateY(-3px);
+        border-color: rgba(246, 201, 69, 0.7);
+        box-shadow:
+          0 0 26px var(--glow-primary),
+          0 18px 40px rgba(0, 0, 0, 0.8);
+      }
+
+      .blog-list__item--featured {
+        background: radial-gradient(
+            circle at top left,
+            var(--color-primary-soft),
+            transparent 55%
+          ),
+          rgba(5, 8, 20, 0.96);
+        box-shadow:
+          0 0 26px var(--glow-primary),
+          var(--shadow-soft);
+      }
+
+      .blog-list__title {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--space-xs);
+      }
+
+      .blog-list__title a {
+        text-decoration: none;
+      }
+
+      .blog-list__title a:hover {
+        text-decoration: underline;
+      }
+
+      .blog-list__meta {
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--color-text-muted);
+      }
+
+      .blog-list__description {
+        margin: 0 0 var(--space-sm);
+        line-height: 1.7;
+      }
+
+      .blog-list__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2xs);
+        margin-bottom: var(--space-sm);
+      }
+
+      .blog-list__tag {
+        padding: 0.15rem 0.6rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        font-size: var(--font-size-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--color-text-muted);
+      }
+
+      .blog-list__readmore {
+        font-size: var(--font-size-sm);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .blog-list__thumb {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: var(--space-sm);
+      }
+
+      .blog-list__thumb-img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        display: block;
+        object-fit: cover;
+        transform: scale(1);
+        transition: transform var(--duration-slow) var(--ease-smooth);
+      }
+
+      .blog-list__item:hover .blog-list__thumb-img {
+        transform: scale(1.04);
+      }
+
+      @keyframes blog-card-in {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .blog-list {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .blog-list__item--featured {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .blog-list {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: var(--space-lg);
+        }
+
+        .blog-list__item--featured {
+          grid-column: 1 / span 2;
+          grid-row: 1 / span 2;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .blog-list__item {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+
+        .blog-list__item:hover {
+          transform: translateY(-1px);
+          box-shadow: var(--shadow-soft);
+        }
+
+        .blog-list__item:hover .blog-list__thumb-inner {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="layout-shell site-header__inner">
+        <a href="/" class="site-header__logo">Webakoof</a>
+        <nav class="site-header__nav" aria-label="Primary navigation">
+          <a href="/" class="site-header__link">Home</a>
+          <a href="/blog.html" class="site-header__link">Blog</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <section class="section">
+        <div class="layout-shell">
+          <header class="section__header">
+            <p class="section__eyebrow">Blog</p>
+            <h1 class="section__title">Ideas for founders who move fast.</h1>
+            <p class="section__subtitle">
+              Articles on shipping fast, keeping websites lean, and turning traffic into conversations.
+            </p>
+          </header>
+
+          <div id="blog-list" class="blog-list" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="layout-shell site-footer__inner">
+        <p class="site-footer__copy">
+          &copy; <span id="footer-year"></span> Webakoof. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Frontmatter + metadata loader for the blog list page.
+      (function () {
+        const listEl = document.getElementById("blog-list");
+
+        function parseFrontmatter(text) {
+          const delimiter = "---";
+          if (!text.startsWith(delimiter)) {
+            return { meta: {}, body: text };
+          }
+
+          const end = text.indexOf(delimiter, delimiter.length);
+          if (end === -1) {
+            return { meta: {}, body: text };
+          }
+
+          const rawFront = text.slice(delimiter.length, end).trim();
+          const body = text.slice(end + delimiter.length).trim();
+          const meta = {};
+
+          const lines = rawFront.split("\n");
+          let currentKey = null;
+
+          for (let i = 0; i < lines.length; i += 1) {
+            const line = lines[i];
+            if (!line.trim()) continue;
+
+            if (/^\s*-/.test(line) && currentKey) {
+              // List item for the current key
+              const value = line.replace(/^\s*-\s*/, "").trim();
+              if (!meta[currentKey]) meta[currentKey] = [];
+              meta[currentKey].push(value.replace(/^["']|["']$/g, ""));
+              continue;
+            }
+
+            const idx = line.indexOf(":");
+            if (idx === -1) continue;
+
+            const key = line.slice(0, idx).trim();
+            let value = line.slice(idx + 1).trim();
+            currentKey = key;
+
+            // Inline array syntax: [A, B, C]
+            if (value.startsWith("[") && value.endsWith("]")) {
+              const inner = value.slice(1, -1).trim();
+              meta[key] = inner
+                ? inner.split(",").map((part) => part.trim().replace(/^["']|["']$/g, ""))
+                : [];
+              continue;
+            }
+
+            if (!value) {
+              // Expect following lines with "- item" syntax
+              meta[key] = meta[key] || [];
+              continue;
+            }
+
+            meta[key] = value.replace(/^["']|["']$/g, "");
+          }
+
+          return { meta, body };
+        }
+
+        function formatDate(value) {
+          if (!value) return "";
+          const d = new Date(value);
+          if (Number.isNaN(d.getTime())) return value;
+          return d.toLocaleDateString("en-IN", {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+        }
+
+        async function loadIndex() {
+          try {
+            const res = await fetch("/content/blog/index.json", { cache: "no-store" });
+            if (!res.ok) {
+              return null;
+            }
+            return res.json();
+          } catch (error) {
+            console.warn("Unable to load blog index:", error);
+            return null;
+          }
+        }
+
+        async function loadPostMeta(filename) {
+          try {
+            const res = await fetch(`/content/blog/${filename}`, { cache: "no-store" });
+            if (!res.ok) {
+              console.warn("Skipping post, fetch failed:", filename);
+              return null;
+            }
+            const text = await res.text();
+            const { meta } = parseFrontmatter(text);
+            const slug = (meta.slug || filename.replace(/\.md$/i, "")).trim();
+
+            const tags = Array.isArray(meta.tags)
+              ? meta.tags
+              : typeof meta.tags === "string" && meta.tags
+                ? [meta.tags]
+                : [];
+
+            return {
+              slug,
+              title: meta.title || filename,
+              description: meta.description || "",
+              date: meta.date || "",
+              cover: meta.cover || "",
+              tags,
+            };
+          } catch (error) {
+            console.warn("Skipping post, error while loading:", filename, error);
+            return null;
+          }
+        }
+
+        function createCard(post, isFeatured) {
+          const item = document.createElement("article");
+          item.className = "blog-list__item";
+          if (isFeatured) {
+            item.classList.add("blog-list__item--featured");
+          }
+
+          // Optional cover thumbnail
+          if (post.cover) {
+            const thumb = document.createElement("div");
+            thumb.className = "blog-list__thumb";
+            const img = document.createElement("img");
+            img.className = "blog-list__thumb-img";
+            img.src = post.cover;
+            img.alt = post.title || "";
+            img.loading = "lazy";
+            img.decoding = "async";
+            thumb.appendChild(img);
+            item.appendChild(thumb);
+          }
+
+          const title = document.createElement("h2");
+          title.className = "blog-list__title";
+          const link = document.createElement("a");
+          link.href = `/blog-post.html?slug=${encodeURIComponent(post.slug)}`;
+          link.textContent = post.title;
+          title.appendChild(link);
+
+          const meta = document.createElement("p");
+          meta.className = "blog-list__meta";
+          meta.textContent = formatDate(post.date);
+
+          const desc = document.createElement("p");
+          desc.className = "blog-list__description";
+          desc.textContent = post.description;
+
+          if (post.tags && post.tags.length) {
+            const tagsEl = document.createElement("div");
+            tagsEl.className = "blog-list__tags";
+            post.tags.forEach((tag) => {
+              const chip = document.createElement("span");
+              chip.className = "blog-list__tag";
+              chip.textContent = tag;
+              tagsEl.appendChild(chip);
+            });
+            item.appendChild(tagsEl);
+          }
+
+          const readMore = document.createElement("a");
+          readMore.className = "blog-list__readmore";
+          readMore.href = `/blog-post.html?slug=${encodeURIComponent(post.slug)}`;
+          readMore.textContent = "Read more";
+
+          item.appendChild(title);
+          if (post.date) item.appendChild(meta);
+          if (post.description) item.appendChild(desc);
+          item.appendChild(readMore);
+
+          return item;
+        }
+
+        async function init() {
+          const yearSpan = document.getElementById("footer-year");
+          if (yearSpan) {
+            yearSpan.textContent = String(new Date().getFullYear());
+          }
+
+          if (!listEl) return;
+
+          listEl.textContent = "Loading posts…";
+
+          const filenames = await loadIndex();
+          if (!filenames || !filenames.length) {
+            listEl.textContent = "No posts found.";
+            return;
+          }
+
+          const posts = await Promise.all(filenames.map((name) => loadPostMeta(name)));
+          const validPosts = posts.filter(Boolean);
+
+          validPosts.sort((a, b) => {
+            const da = new Date(a.date).getTime() || 0;
+            const db = new Date(b.date).getTime() || 0;
+            return db - da;
+          });
+
+          if (!validPosts.length) {
+            listEl.textContent = "No posts found.";
+            return;
+          }
+
+          listEl.innerHTML = "";
+
+          validPosts.forEach((post, index) => {
+            const card = createCard(post, index === 0);
+            listEl.appendChild(card);
+          });
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+      })();
+    </script>
+  </body>
+</html>
+
